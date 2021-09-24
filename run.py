@@ -38,12 +38,49 @@ def render(width, height, attack):
 
     print(header)
 
+def render_fleet(width, height, fleet):
+    header = "#" + "-" * width + "#"
+    print(header)
+
+    board = []
+    for _ in range(width):
+        board.append([None for _ in range(height)])
+
+    for s in fleet:
+        for x, y in s.hull:
+            board[x][y] = "O"
+
+    for y in range(height):
+        row = []
+        for x in range(width):
+            row.append(board[x][y] or " ")
+        print("|" + "".join(row) + "|")
+
+    print(header)
+
 if __name__ == "__main__":
+
+    fleet = [
+        Ship.build((6,3), 2, "N"),
+        Ship.build((5,9), 5, "E"),
+        Ship.build((4,1), 3, "W"),
+        Ship.build((2,4), 4, "S")
+    ]
+
+    for s in fleet:
+        print(s.hull)
+
+    render_fleet(10, 10, fleet)
+
+    exit(0)
+    
     attack = []
 
     while True:
         inp = input("Where do you wish to attack?\n")
+         # Split is used to convert the string "x, y" to an array with x and y coordintes.
         xstr, ystr = inp.split(",")
+        # Converts the arrays to integers.
         x = int(xstr)
         y = int(ystr)
 
