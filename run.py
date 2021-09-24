@@ -1,3 +1,26 @@
+class Ship(object):
+
+    @staticmethod
+    def build(front, length, lat_long):
+        hull = []
+        #Latitutue and longitute (North, West etc.) Enables simple positioning of ships.
+        for i in range(length):
+            if lat_long == "N":
+                elem = (front[0], front[1] - i)
+            elif lat_long == "E":
+                elem = (front[0] + i, front[1]) 
+            elif lat_long == "W":
+                elem = (front[0] - i, front[1])       
+            elif lat_long == "S":
+                elem = (front[0], front[1] + i)
+
+            hull.append(elem)
+
+        return Ship(hull)
+    
+    def __init__(self, hull):
+        self.hull = hull
+
 def render(width, height, attack):
     header = "#" + "-" * width + "+"
     print(header)
