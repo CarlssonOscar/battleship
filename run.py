@@ -1,3 +1,30 @@
+class Game(object):
+
+    def __init__(self, fleet, width, height):
+        self.fleet = fleet
+        self.shots = []
+        self.width = width
+        self.height = height
+
+    def take_shot(self, shot_location):
+        is_hit = False
+        for s in self.fleet:
+            ind = s.hull_index(shot_location)
+            if ind is not None:
+                is_hit = True
+                s.hits[ind] = True
+                break
+
+        self.shots.append(Shot(shot_location, is_hit))
+
+
+class Shot(object):
+
+    def __init__(self, location, is_hit):
+        self.location = location
+        self.is_hit = is_hit
+
+
 class Ship(object):
 
     @staticmethod
