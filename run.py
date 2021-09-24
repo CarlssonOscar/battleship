@@ -5,7 +5,8 @@ class Game(object):
         self.shots = []
         self.width = width
         self.height = height
-
+        
+    # If ship was hit, update. Save shot on board needless of hit or miss. 
     def take_shot(self, shot_location):
         is_hit = False
         for s in self.fleet:
@@ -30,7 +31,7 @@ class Ship(object):
     @staticmethod
     def build(front, length, lat_long):
         hull = []
-        #Latitutue and longitute (North, West etc.) Enables simple positioning of ships.
+        #Latitude and longitute (North, West etc.) Enables simple positioning of ships.
         for i in range(length):
             if lat_long == "N":
                 elem = (front[0], front[1] - i)
@@ -47,9 +48,16 @@ class Ship(object):
     
     def __init__(self, hull):
         self.hull = hull
+        self.hits = [False] * len(hull)
+
+    def hull_index(self, location):
+        try:
+            return self.hull.index(location)
+        except ValueError:
+            return None
 
 def render(width, height, attack):
-    header = "#" + "-" * width + "+"
+    header = "#" + "-" * width + "#"
     print(header)
 
     attack_set = set(attack)
@@ -94,10 +102,23 @@ if __name__ == "__main__":
         Ship.build((2,4), 4, "S")
     ]
 
-    for s in fleet:
-        print(s.hull)
 
-    render_fleet(10, 10, fleet)
+    game_board = Game(fleet, 10, 10)
+    shots = [(1,3), (4,4), (6,8)]
+    for sh in shots:
+        game_board.take_shot(sh)
+
+    for sh in game_board.shots:
+        print(sh.location)
+        print(sh.is_hit)
+        print("@@@@@@@")
+    for s in game_board.fleet:
+        print(s.hull)
+        print(s.hits)
+        print("@@@@@@@")
+
+    
+    render(10,10,game_board.shots)
 
     exit(0)
     
