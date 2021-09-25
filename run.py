@@ -1,4 +1,4 @@
-
+import copy
 
 class Game(object):
 
@@ -104,9 +104,24 @@ if __name__ == "__main__":
         Ship.build((2,4), 4, "S")
     ]
 
-    game_board = Game(fleet, 10, 10)
+    game_boards = [
+        Game(fleet, 10, 10),
+        Game(copy.deepcopy(fleet), 10, 10)
+    ]
+    player_names = [
+        "Username",
+        "Dwight Schrute",
+    ]
+
+    attacking_ind = 0
     
     while True:
+        # Attacking player is the non-defending one.
+        defending_ind = (attacking_ind + 1) % 2
+        defending_board = game_boards[defending_ind]
+
+        print("%s Your Turn!" % player_names[attacking_ind])
+
         inp = input("Where Do You Wish To Attack?\n")
          # Split is used to convert the string "x, y" to an array with x and y coordintes.
         xstr, ystr = inp.split(",")
@@ -114,10 +129,14 @@ if __name__ == "__main__":
         x = int(xstr)
         y = int(ystr)
 
-        game_board.take_shot((x,y))
-        render(game_board)
-
-        if game_board.is_game_over():
-            print("You Are Victorious!")
+        defending_board.take_shot((x,y))
+        render(defending_board)
+        
+        if defending_board.is_game_over():
+            print("%s WINS!" % player_names[attacking_ind])
             break
+        # # Defending fleet becomes the attacking fleet.
+        attacking_ind = defending_ind
+
+        
 
