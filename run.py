@@ -1,4 +1,8 @@
 import copy
+import random
+import time
+
+username = input("Enter Admiral Name\n")
 
 class Game(object):
 
@@ -64,7 +68,14 @@ class Ship(object):
     def is_destroyed(self):
         return all(self.hits)
 
-def render(game_board, show_fleet = False):
+class admiral (object):
+
+    def __init__(self, name, shot_f):
+        self.name = name
+        self.shot_f = shot_f
+
+
+def render_basic(game_board, show_fleet = False):
     header = "+" + "-" * game_board.width + "+"
     print(header)
 
@@ -113,8 +124,54 @@ def render(game_board, show_fleet = False):
 
     print(header)
 
+def announce_en(event_type, metadata = {}):
+    # Enable a player to choose their admirals name.
+    if event_type == "game_over":
+        print("%s You Are Victorius" % metadata['admiral'])
+    elif event_type == "new_turn":
+        print("%s Your Turn!" % metadata['admiral'])
+    elif event_type == "miss":
+        print("%s Your Attack Was Unsucessfull" % metadata['admiral'])
+    elif event_type == "Ship_destroyed":
+        print("%s You Destroyed a Ship!" % metadata['admiral'])
+    elif event_type == "Ship_hit":
+        print("%s Your Attack Was Sucessfull!" % metadata['admiral'])
+    else:
+        # Game crashes if an admiral does add 10 (x or y) or above. Either wright in rules in instructions file or fix.
+        print("Borde Missed: %s" % event_type)
 
-if __name__ == "__main__":
+def announce_none(event_type, metadata={}):
+    pass
+
+
+def get_random_ai_shot(game_board):
+    x = random.randint(0, game_board.width - 1)
+    y = random.randint(0, game_board.height - 1)
+    return (x, y)
+
+
+def random_sleepy_ai(sleep_time):
+    return sleepy_ai(get_random_ai_shot, sleep_time)
+
+
+def sleepy_ai(ai_f, sleep_time):
+    def f(game_board):
+        time.sleep(sleep_time)
+        return ai_f(game_board)
+    return f
+
+
+def get_human_shot(game_board):
+    inp = input("Where do you want to shoot?\n")
+    xstr, ystr = inp.split(",")
+    x = int(xstr)
+    y = int(ystr)
+
+    return (x, y)
+
+
+def run(announce_f, render_f):
+
     fleet = [
         Ship.build((6,3), 2, "N"),
         Ship.build((5,9), 5, "E"),
@@ -126,9 +183,12 @@ if __name__ == "__main__":
         Game(fleet, 10, 10),
         Game(copy.deepcopy(fleet), 10, 10)
     ]
+
     admirals = [
-        "Username",
-        "Dwight Schrute",
+        admiral(username, get_human_shot),
+        # Ai 3.0 second delay before making a move.
+        admiral("Dwight Schrute", random_slow_ai(3.0)),
+    ]
     ]
 
     attacking_ind = 0
@@ -156,5 +216,7 @@ if __name__ == "__main__":
         # # Defending fleet becomes the attacking fleet.
         attacking_ind = defending_ind
 
+if __name__ == "__main__":
+    run(render_basic)
         
 
