@@ -75,8 +75,26 @@ def render(game_board, show_fleet = False):
     if show_fleet:
         # Add fleet to board
         for s in game_board.fleet:
-            for x, y in s.hull:
-                board[x][y] = "1"
+            for i, (x, y) in enumerate(s.hull):
+                # Hull shape
+                if s.lat_long == "N":
+                    shape = ("v", "|", "^")
+                elif s.lat_long == "S":
+                    shape = ("^", "|", "v")
+                elif s.lat_long == "W":
+                    shape = (">", "=", "<")
+                elif s.lat_long == "E":
+                    shape = ("<", "=", ">")
+                else:
+                    raise "Unknown lat/long"
+
+                if i == 0:
+                    add = shape[0]
+                elif i == len(s.hull) - 1:
+                    add = shape[2]
+                else:
+                    add = shape[1]
+                board[x][y] = add
 
     for sh in game_board.shots:
         x, y = sh.location
@@ -108,7 +126,7 @@ if __name__ == "__main__":
         Game(fleet, 10, 10),
         Game(copy.deepcopy(fleet), 10, 10)
     ]
-    player_names = [
+    admirals = [
         "Username",
         "Dwight Schrute",
     ]
