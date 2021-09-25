@@ -64,9 +64,9 @@ class Ship(object):
     def is_destroyed(self):
         return all(self.hits)
 
-    def render(game_board, show_fleet = False):
-        header = "+" + "-" * game_board.width + "+"
-        print(header)
+def render(game_board, show_fleet = False):
+    header = "+" + "-" * game_board.width + "+"
+    print(header)
 
     board = []
     for _ in range(game_board.width):
