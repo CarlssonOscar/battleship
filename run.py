@@ -2,6 +2,10 @@ import copy
 import random
 import time
 
+# The rules of the game
+rules = "A fleet of four ships are placed on each board. Your assignement as admiral is to face the evil admiral Dwight Schrute and his fleet and destroy his fleet before he destroys yours. Your first assigment is to assign a admiral. To attack you have to use x and y coordinates between 0-9 (example attack 0,4). Unfortunatly the game will crash if the coordinates are not written correctly, so be careful. The game is not able to remember if the coordinates chosen have been used before so analyze the board if you are unsure. Each time a ship is destroyed you are notified by the announcements during the game. Good luck Admiral! \n "
+print(rules)
+
 username = input("Enter Admiral Name\n")
 
 class Game(object):
