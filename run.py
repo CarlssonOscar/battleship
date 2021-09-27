@@ -2,10 +2,9 @@ import copy
 import random
 import time
 
-# The rules of the game
-rules = "A fleet of four ships are placed on each board. Your assignement as admiral is to face the evil admiral Dwight Schrute and his fleet and destroy his fleet before he destroys yours. Your first assigment is to assign a admiral. To attack you have to use x and y coordinates between 0-9 (example attack 0,4), X is the sign of a hit, / is the sign of a miss. Unfortunatly the game will crash if the coordinates are not written correctly, so be careful. The game is not able to remember if the coordinates chosen have been used before so analyze the board if you are unsure. Each time a ship is destroyed you are notified by the announcements during the game. Good luck Admiral! \n "
+# The rules of the game.
+rules = "A fleet of four ships are placed on each board. Your assignment as admiral is to face the evil admiral Dwight Schrute and his fleet and destroy his fleet before he destroys yours. Your first assigment is to assign a admiral. To attack you have to use x and y coordinates between 0-9 (example attack 0,4), X is the sign of a hit, / is the sign of a miss. Unfortunately the game will crash if the coordinates are not written correctly, so be careful. The game is not able to remember if the coordinates chosen have been used before so analyze the board if you are unsure. Each time a ship is destroyed you are notified by the announcements during the game. Good luck Admiral!\n"
 print(rules)
-
 username = input("Enter Admiral Name\n")
 
 class Game(object):
@@ -111,7 +110,7 @@ def render_basic(game_board, show_fleet = False):
                     add = shape[1]
                 board[x][y] = add
 
-    # Add the shots to the board
+    # Add the shots to the board.
     for sh in game_board.shots:
         x, y = sh.location
         if sh.is_hit:
@@ -120,7 +119,7 @@ def render_basic(game_board, show_fleet = False):
             add = "/"
         board[x][y] = add
     
-    # Construct empty board vertically
+    # Construct empty board vertically.
     for y in range(game_board.height):
       
         row = []
@@ -131,7 +130,7 @@ def render_basic(game_board, show_fleet = False):
     print(header)
 
 def announce_en(event_type, metadata = {}):
-    # Enable a player to choose their Admirals name.
+    # Enable a player to choose their admirals name.
     if event_type == "game_over":
         print("%s You Are Victorius" % metadata['admiral'])
     elif event_type == "new_turn":
@@ -189,7 +188,7 @@ def run(announce_f, render_f):
         Game(copy.deepcopy(fleet), 10, 10)
     ]
 
-    #Player + Ai. Only able to change name or let two human players or two AIs manually.
+    #Player + AI. Only able to change name or let two human players or two AIs manually.
     Admirals = [
         admiral(username, get_human_shot),
         # Ai 3.0 second delay before making a move.
@@ -230,5 +229,3 @@ def run(announce_f, render_f):
 if __name__ == "__main__":
     run(announce_en, render_basic)
         
-
-squad
