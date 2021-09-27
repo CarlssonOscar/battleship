@@ -149,6 +149,7 @@ def announce_none(event_type, metadata={}):
     pass
 
 def get_human_shot(game_board):
+    # Better, can redo input if 55,1 is put forth etc, but still can't handle letters or other signs.
     try: 
         valid_input = False
         while not valid_input:
