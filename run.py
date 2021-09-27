@@ -30,7 +30,7 @@ class Game(object):
         self.shots.append(Shot(shot_location, is_hit))
         return hit_ship
     
-    # When one squad entire fleet has been destroyed the game is over. 
+    # When one Admirals entire fleet has been destroyed the game is over. 
     def is_game_over(self):
          # ALL only returns true if the list of all the ships initial positions have been hit.
         return all([s.is_destroyed() for s in self.fleet])
@@ -131,7 +131,7 @@ def render_basic(game_board, show_fleet = False):
     print(header)
 
 def announce_en(event_type, metadata = {}):
-    # Enable a player to choose their squad name.
+    # Enable a player to choose their Admirals name.
     if event_type == "game_over":
         print("%s You Are Victorius" % metadata['admiral'])
     elif event_type == "new_turn":
@@ -190,7 +190,7 @@ def run(announce_f, render_f):
     ]
 
     #Player + Ai. Only able to change name or let two human players or two AIs manually.
-    Squad = [
+    Admirals = [
         admiral(username, get_human_shot),
         # Ai 3.0 second delay before making a move.
         admiral("Dwight Schrute", random_slow_ai(3.0)),
@@ -231,3 +231,4 @@ if __name__ == "__main__":
     run(announce_en, render_basic)
         
 
+squad
