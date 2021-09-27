@@ -1,1 +1,1 @@
-# Your requirements go here
+Only pre-installed modules (time, random and copy) was used during this projects. 
