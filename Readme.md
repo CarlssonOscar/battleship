@@ -1,6 +1,8 @@
 # Battleship Game
 The battleship game is a traditional battleship game where a player is able to face an AI opponent. Basically a fun game perfect for passing time.
 
+![](assets/images/battleship.jpg)
+
 # Features
 
 ## Rules 
@@ -20,7 +22,6 @@ Announcements surrounding the game are put forth before and after each shot duri
 * It notifys the player if the shot was a hit or a miss.
 * if a ship was destroyed. 
 * If you lost or won. 
-
 
 ![](assets/images/destroyed.jpg)
 ![](assets/images/victorious.jpg)
@@ -74,9 +75,9 @@ Deployment on Heroku.
 6. Click on Deploy in the bar.
 7. Click on connect on github in the Deployment method section.
 8. Click search in the connect to GitHUb section and choose the relevant github repository.
-9. Click on Automatic deploys or manual deploy depending on preference. Manual deploy was chose for this project.
+9. Click on Automatic deploys or manual deploy depending on preference. Manual deploy was chosen for this      project.
 
- Here is a link to the finished game [Battleship game](https://battleship-s.herokuapp.com/).
+ Here is a link to the finished game [Battleship Game](https://battleship-s.herokuapp.com/).
 
 # Credits
 
