@@ -204,7 +204,7 @@ def run(announce_f, render_f):
         defending_ind = (attacking_ind + 1) % 2
 
         defending_board = game_boards[defending_ind]
-        attacking_admiral = Squad[attacking_ind]
+        attacking_admiral = Admirals[attacking_ind]
 
         announce_f("new_turn", {"admiral": attacking_admiral.name})
         shot_location = attacking_admiral.shot_f(defending_board)
