@@ -3,7 +3,15 @@ import random
 import time
 
 # The rules of the game.
-rules = "A fleet of four ships are placed on each board. Your assignment as admiral is to face the evil admiral Dwight Schrute and his fleet and destroy his fleet before he destroys yours. Your first assigment is to assign a admiral. To attack you have to use x and y coordinates between 0-9 (example attack 0,4), X is the sign of a hit, / is the sign of a miss. Unfortunately the game will crash if the coordinates are not written correctly, so be careful. The game is not able to remember if the coordinates chosen have been used before so analyze the board if you are unsure. Each time a ship is destroyed you are notified by the announcements during the game. Good luck Admiral!\n"
+rules = """A fleet of four ships are placed on each board. Your assignment is to 
+face the evil admiral Dwight Schrute and his fleet and destroy his fleet before
+he destroys yours. Your first assigment is to assign a admiral. To attack you
+have to use x and y coordinates between 0-9 (example attack 0,4), X is the sign
+of a hit, / is the sign of a miss. Unfortunately the game will crash if the
+coordinates are not written correctly, so be careful. The game is not able to
+remember if the coordinates chosen have been used before so analyze the board
+if you are unsure. Each time a ship is destroyed you are notified by the
+announcements during the game. Good luck Admiral!\n"""
 print(rules)
 username = input("Enter Admiral Name\n")
 
@@ -31,7 +39,8 @@ class Game(object):
     
     # When one Admirals entire fleet has been destroyed the game is over. 
     def is_game_over(self):
-         # ALL only returns true if the list of all the ships initial positions have been hit.
+         # ALL only returns true if the list of all the ships initial 
+         # positions have been hit.
         return all([s.is_destroyed() for s in self.fleet])
 
 class Shot(object):
