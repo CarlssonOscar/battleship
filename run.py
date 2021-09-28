@@ -164,6 +164,7 @@ def get_human_shot(game_board):
     while True:
         x = input("Enter x coordinate\n")
         if x.isdigit():
+            # range(0, 10) since the program will not accept 9 when range(0, 9) is used.
             if int(x) in range(0, 10):
                 x = int(x)
                 break
