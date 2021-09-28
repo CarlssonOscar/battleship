@@ -50,8 +50,7 @@ The opponent is a AI.
 
 ## Python
 
-
-
+Went through [Python Syntax Checker PEP8](https://www.pythonchecker.com/) without issues.
 
 
 # Unfixed Bugs
@@ -81,4 +80,4 @@ The code for the battleship game was in part acquired through a tutorial series 
 
 # Acknowledgements 
 
-[Code Institute](https://codeinstitute.net) for providing excellent course material.
+[Code Institute](https://codeinstitute.net) for providing excellent course material and tutoring.
