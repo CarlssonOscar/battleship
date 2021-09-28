@@ -158,21 +158,24 @@ def announce_none(event_type, metadata={}):
     pass
 
 def get_human_shot(game_board):
-    # Better, can redo input if 55,1 is put forth etc, but still can't handle letters or other signs.
-    try: 
-        valid_input = False
-        while not valid_input:
-            inp = input("Where Do You Want To Attack?\n")
-            # Split is used to convert the string "x, y" to an array with x and y coordintes.
-            xstr, ystr = inp.split(",")
-            # Converts the arrays to integers.
-            x = int(xstr)
-            y = int(ystr)
-            if x in range(0, 9) and y in range(0, 9):
-                valid_input = True
-                return (x,y)
-    except ValueError:
-        pass
+    x = None
+    y = None
+
+    while True:
+        x = input("Enter x coordinate\n")
+        if x.isdigit():
+            if int(x) in range(0, 10):
+                x = int(x)
+                break
+
+    while True:
+        y = input("Enter y coordinate\n")
+        if y.isdigit():
+            if int(y) in range(0, 10):
+                y = int(y)
+                break
+
+    return (x,y)
 
 # Provides random shot on the board, width / height -1 since coordinates goes from 0-9, negative numbers or 10 or above will crash the program.
 def get_random_ai_shot(game_board):
