@@ -42,8 +42,6 @@ The opponent is a AI.
 
 * Enable placement of ships in fleet by the player. As of now only the admin can change the positions of the ships, unfortunatly this means that the player will likely realise that the fleet is positioned the same way after a couple of games.
 
-* When faulty coordinates or anything else than coordinates are written by the player the games crashes. To avoid this a new feature would solve this problem by enableing players to rewright input until it's correct.
-
 * Developing a AI opponent which is more effecient than simply putting out random coordinates on the game board.
 
 * If previousley used coordinates are put forth again the game should notify the player and enable them to choose new coordinates instead of continuing.
