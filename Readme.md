@@ -30,7 +30,7 @@ Announcements surrounding the game are put forth before and after each shot duri
 
 ## Storing hits and misses
 
-The board stores hits and misses on the board. 
+The board stores hits and misses. 
 
 ![](assets/images/game-board.jpg)
 
@@ -54,13 +54,11 @@ The opponent is a AI.
 
 Went through [Python Syntax Checker PEP8](https://www.pythonchecker.com/) without issues.
 
-
 # Unfixed Bugs
 
 * The game has no way of knowing if the coordinates have been used before or not.
 
 * If a player writes down the coordinates before the AI has attacked the player might get confused since the input seems to be needed to be put forth again. If it is the player has to put forth the coordinates again. Can be avoided through removing the time module. Will keep for more realistic user experience.
-
 
 # Deployment
 Deployment on Heroku.
