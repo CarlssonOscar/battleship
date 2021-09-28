@@ -6,11 +6,10 @@ import time
 rules = """A fleet of four ships are placed on each board. Your assignment is to 
 face the evil admiral Dwight Schrute and his fleet and destroy his fleet before
 he destroys yours. Your first assigment is to assign a admiral. To attack you
-have to use x and y coordinates between 0-9 (example attack 0,4), X is the sign
-of a hit, / is the sign of a miss. Unfortunately the game will crash if the
-coordinates are not written correctly, so be careful. The game is not able to
-remember if the coordinates chosen have been used before so analyze the board
-if you are unsure. Each time a ship is destroyed you are notified by the
+have to use x and y coordinates between 0-9, first you add the x variabel than 
+the y variable. X is the sign of a hit, / is the sign of a miss. The game is not 
+able to remember if the coordinates chosen have been used before so analyze the 
+board if you are unsure. Each time a ship is destroyed you are notified by the
 announcements during the game. Good luck Admiral!\n"""
 print(rules)
 username = input("Enter Admiral Name\n")
@@ -86,7 +85,8 @@ class admiral (object):
         self.name = name
         self.shot_f = shot_f
 
-# Construct empty board horisontally, fleet is set to True when adjusting placement of the fleets ships.
+# Construct empty board horisontally, fleet is set to True when adjusting
+#  placement of the fleets ships.
 def render_basic(game_board, show_fleet = False):
     header = "#" + "-" * game_board.width + "#"
     print(header)
@@ -151,12 +151,12 @@ def announce_en(event_type, metadata = {}):
     elif event_type == "Ship_hit":
         print("%s Your Attack Was Sucessfull!" % metadata['admiral'])
     else:
-        # Game crashes if an admiral does add 10 (x or y) or above. Either wright in rules in instructions file or fix.
         print("Borde Missed: %s" % event_type)
 
 def announce_none(event_type, metadata={}):
     pass
 
+# Only coordinates between 0-9 is valid, ensures game will not crash because of faulty input.
 def get_human_shot(game_board):
     x = None
     y = None
@@ -177,7 +177,7 @@ def get_human_shot(game_board):
 
     return (x,y)
 
-# Provides random shot on the board, width / height -1 since coordinates goes from 0-9, negative numbers or 10 or above will crash the program.
+# Provides random shot on the board, width / height -1 since coordinates goes from 0-9.
 def get_random_ai_shot(game_board):
     x = random.randint(0, game_board.width - 1)
     y = random.randint(0, game_board.height - 1)

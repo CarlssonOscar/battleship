@@ -58,11 +58,9 @@ The opponent is a AI.
 
 # Unfixed Bugs
 
-* If the coordinates are not written correctly the game crashes, the coordinates have to be with in the game board area (x 0-9, y 0-9).
-
 * The game has no way of knowing if the coordinates have been used before or not.
 
-* If a player writes down the coordinates before the AI has attacked the player might get confused since the input seems to be needed to be put forth again. If it is it will crash.
+* If a player writes down the coordinates before the AI has attacked the player might get confused since the input seems to be needed to be put forth again. If it is the player has to put forth the coordinates again. Can be avoided through removing the time module. Will keep for more realistic user experience.
 
 
 # Deployment
