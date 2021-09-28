@@ -13,6 +13,7 @@ In the beggining of the game the rules are presented.
 ## Username
 
 A player is able to choose what their admirals name is.
+
 ![](assets/images/username.jpg)
 
 ## Announcements 
@@ -23,8 +24,9 @@ Announcements surrounding the game are put forth before and after each shot duri
 * if a ship was destroyed. 
 * If you lost or won. 
 
-![](assets/images/destroyed.jpg)
 ![](assets/images/victorious.jpg)
+
+![](assets/images/destroyed.jpg)
 
 ## Storing hits and misses
 
