@@ -3,6 +3,8 @@ The battleship game is a traditional battleship game where a player is able to f
 
 ![](assets/images/battleship.jpg)
 
+The game can be tried [here](https://battleship-s.herokuapp.com/)
+
 # Features
 
 ## Rules 
