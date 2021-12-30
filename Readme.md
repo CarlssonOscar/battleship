@@ -50,9 +50,24 @@ The opponent is a AI.
 
 # Testing
 
+## Manual Testing
+
+* Check if instructions are displayed correctly.
+* Check if a players can choose a username.
+* Check if faulty coordinates work (Faulty numbers, letters or signs), they don'y (only numbers between 0-9 are accepted).
+* Check if commenting is correct and a player can add cordinates again until it's correct.
+* Check if game board is displayed as intended.
+* Check if a miss or hit is displayed correctly on the game board.
+* Check if commenting matches a hit or miss.
+* Check if the game ends when a player has won or lost.
+* Check if commenting matches a win or loss.
+
+
 ## Python
 
-Went through [Python Syntax Checker PEP8](https://www.pythonchecker.com/) without issues.
+Went through [PEP8](http://pep8online.com//) without issues.
+
+![](assets/images/pep8.jpg)
 
 # Unfixed Bugs
 
